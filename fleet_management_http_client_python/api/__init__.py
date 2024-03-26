@@ -1,0 +1,13 @@
+# flake8: noqa
+
+# import apis into api package
+from fleet_management_http_client_python.api.api_api import ApiApi
+from fleet_management_http_client_python.api.car_api import CarApi
+from fleet_management_http_client_python.api.car_state_api import CarStateApi
+from fleet_management_http_client_python.api.order_api import OrderApi
+from fleet_management_http_client_python.api.order_state_api import OrderStateApi
+from fleet_management_http_client_python.api.platform_hw_api import PlatformHWApi
+from fleet_management_http_client_python.api.route_api import RouteApi
+from fleet_management_http_client_python.api.security_api import SecurityApi
+from fleet_management_http_client_python.api.stop_api import StopApi
+
