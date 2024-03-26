@@ -5,7 +5,7 @@ The HTTP API is described by the `openapi/openapi.yaml` according to [OpenAPI Sp
 A full specification can be found in the `openapi` folder in the root folder.
 
 ## Auto-generated code
-The auto-generated code can be found in the `fleet_management_client` folder.
+The auto-generated code can be found in the `fleet_management_http_client_python` folder.
 The code is generated using the `openapi-generator-cli` tool. The code is generated using the `openapi/openapi.yaml` file.
 DO NOT edit the auto-generated code manually.
 
