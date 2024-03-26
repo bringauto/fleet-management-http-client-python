@@ -1,0 +1,315 @@
+paths:
+  /car:
+    post:
+      operationId: createCar
+      x-openapi-router-controller: fleet_management_api.api_impl.controllers.car
+      tags:
+        - car
+      summary: Create a new Car object.
+      requestBody:
+        x-body-name: car
+        description: A Car model in JSON format.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+        required: true
+      responses:
+        '200':
+          description: The Car has been successfully created.
+          content:
+            text/plain:
+              type: string
+        '400':
+          $ref: './errors.yaml#/components/responses/BadRequest'
+        '401':
+          $ref: './errors.yaml#/components/responses/Unauthorized'
+        '403':
+          $ref: './errors.yaml#/components/responses/Forbidden'
+        default:
+          $ref: './errors.yaml#/components/responses/UnexpectedError'
+    get:
+      operationId: getCars
+      x-openapi-router-controller: fleet_management_api.api_impl.controllers.car
+      tags:
+        - car
+      summary: Find and return all existing Cars.
+      responses:
+        '200':
+          description: All the currently existing Cars have been returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Car'
+              example:
+                [
+                  {
+                    "id": 1,
+                    "platformHWId": 5,
+                    "name": 'BAT-2022-01',
+                    "carAdminPhone": {"phone":'+420123456789'},
+                    "defaultRouteId": 1,
+                    "underTest": false
+                  }
+                ]
+        '401':
+          $ref: './errors.yaml#/components/responses/Unauthorized'
+        '403':
+          $ref: './errors.yaml#/components/responses/Forbidden'
+        default:
+          $ref: './errors.yaml#/components/responses/UnexpectedError'
+    put:
+      operationId: updateCar
+      x-openapi-router-controller: fleet_management_api.api_impl.controllers.car
+      tags:
+        - car
+      summary: Update already existing Car.
+      requestBody:
+        description: JSON representation of the updated Car.
+        x-body-name: car
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+        required: true
+      responses:
+        '200':
+          description: The Car has been successfully updated.
+          content:
+            text/plain:
+              type: string
+        '400':
+          $ref: './errors.yaml#/components/responses/BadRequest'
+        '401':
+          $ref: './errors.yaml#/components/responses/Unauthorized'
+        '403':
+          $ref: './errors.yaml#/components/responses/Forbidden'
+        '404':
+          $ref: './errors.yaml#/components/responses/NotFound'
+        default:
+          $ref: './errors.yaml#/components/responses/UnexpectedError'
+  /car/{carId}:
+    get:
+      operationId: getCar
+      x-openapi-router-controller: fleet_management_api.api_impl.controllers.car
+      tags:
+        - car
+      summary: Find a single Car by its ID.
+      parameters:
+        - name: carId
+          in: path
+          description: An ID of the Car to be returned.
+          required: true
+          example: 1
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: The Car with the specified ID has been found and returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+        '400':
+          $ref: './errors.yaml#/components/responses/BadRequest'
+        '401':
+          $ref: './errors.yaml#/components/responses/Unauthorized'
+        '403':
+          $ref: './errors.yaml#/components/responses/Forbidden'
+        '404':
+          $ref: './errors.yaml#/components/responses/NotFound'
+        default:
+          $ref: './errors.yaml#/components/responses/UnexpectedError'
+    delete:
+      operationId: deleteCar
+      x-openapi-router-controller: fleet_management_api.api_impl.controllers.car
+      tags:
+        - car
+      summary: Delete a Car identified by its ID.
+      parameters:
+        - name: carId
+          in: path
+          description: The ID of the Car to be deleted.
+          required: true
+          example: 1
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: The Car has been successfully deleted.
+          content:
+            text/plain:
+              type: string
+              example: 2 cars were successfully removed.
+        '400':
+          $ref: './errors.yaml#/components/responses/BadRequest'
+        '401':
+          $ref: './errors.yaml#/components/responses/Unauthorized'
+        '403':
+          $ref: './errors.yaml#/components/responses/Forbidden'
+        '404':
+          $ref: './errors.yaml#/components/responses/NotFound'
+        '405':
+          $ref: './errors.yaml#/components/responses/MethodNotAllowed'
+        default:
+          $ref: './errors.yaml#/components/responses/UnexpectedError'
+  /carstate:
+    post:
+      operationId: addCarState
+      x-openapi-router-controller: fleet_management_api.api_impl.controllers.car_state
+      tags:
+        - carState
+      summary: Add a new Car State.
+      requestBody:
+        description: Car State model in JSON format.
+        x-body-name: carState
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarState'
+        required: true
+      responses:
+        '200':
+          description: The new Car State has been successfully added.
+          content:
+            text/plain:
+              type: string
+        '400':
+          $ref: './errors.yaml#/components/responses/BadRequest'
+        '401':
+          $ref: './errors.yaml#/components/responses/Unauthorized'
+        '403':
+          $ref: './errors.yaml#/components/responses/Forbidden'
+        default:
+          $ref: './errors.yaml#/components/responses/UnexpectedError'
+    get:
+      operationId: getAllCarStates
+      x-openapi-router-controller: fleet_management_api.api_impl.controllers.car_state
+      tags:
+        - carState
+      summary: Find one or all Car States for a Car with the specified ID.
+      responses:
+        '200':
+          description: Successfully found all Car States complying with the request parameters.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CarState'
+        '401':
+          $ref: './errors.yaml#/components/responses/Unauthorized'
+        '403':
+          $ref: './errors.yaml#/components/responses/Forbidden'
+        default:
+          $ref: './errors.yaml#/components/responses/UnexpectedError'
+
+  /carstate/{carId}:
+    get:
+      operationId: getCarStates
+      x-openapi-router-controller: fleet_management_api.api_impl.controllers.car_state
+      tags:
+        - carState
+      summary: Find one or all Car States for a given Car.
+      parameters:
+        - name: carId
+          in: path
+          description: ID of the Car for which to find the Car States.
+          required: true
+          example: 1
+          schema:
+            type: integer
+            format: int32
+        - name: allAvailable
+          in: query
+          description: Whether to return all available car states or only the latest one
+          required: false
+          example: true
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Successfully found all Car States complying with the request parameters.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CarState'
+        '400':
+          $ref: './errors.yaml#/components/responses/BadRequest'
+        '401':
+          $ref: './errors.yaml#/components/responses/Unauthorized'
+        '404':
+          $ref: './errors.yaml#/components/responses/NotFound'
+        default:
+          $ref: './errors.yaml#/components/responses/UnexpectedError'
+
+components:
+  schemas:
+    Car:
+      type: object
+      description: Car model structure.
+      required:
+        - platformHwId
+        - name
+        - carAdminPhone
+      properties:
+        id:
+          $ref: 'common_models.yaml#/components/schemas/Id'
+        platformHwId:
+          $ref: 'common_models.yaml#/components/schemas/Id'
+          example: 5
+        name:
+          type: string
+          example: 'BAT-2022-01'
+        carAdminPhone:
+          $ref: 'common_models.yaml#/components/schemas/MobilePhone'
+        defaultRouteId:
+          $ref: 'common_models.yaml#/components/schemas/Id'
+        underTest:
+          type: boolean
+          default: true
+          example: false
+    CarState:
+      type: object
+      description: Car State object structure
+      required:
+        - status
+        - carId
+      properties:
+        id:
+          $ref: 'common_models.yaml#/components/schemas/Id'
+        status:
+          $ref: '#/components/schemas/CarStatus'
+        fuel:
+          type: integer
+          format: int32
+          default: 0
+          example: 80
+        carId:
+          $ref: 'common_models.yaml#/components/schemas/Id'
+        speed:
+          type: number
+          format: float
+          default: 0.0
+          example: 20.5
+        position:
+          $ref: 'common_models.yaml#/components/schemas/GNSSPosition'
+    CarStatus:
+      type: string
+      description: Car Status enum
+      enum:
+        - idle
+        - charging
+        - out_of_order
+        - driving
+        - in_stop
+        - paused_by_phone
+        - paused_by_obstacle
+        - paused_by_button
+      example: idle
