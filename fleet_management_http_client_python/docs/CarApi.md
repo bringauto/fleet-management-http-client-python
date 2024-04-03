@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create_car**
-> create_car(car)
+> Car create_car(car)
 
 Create a new Car object.
 
@@ -54,7 +54,9 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
     try:
         # Create a new Car object.
-        api_instance.create_car(car)
+        api_response = api_instance.create_car(car)
+        print("The response of CarApi->create_car:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling CarApi->create_car: %s\n" % e)
 ```
@@ -70,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Car**](Car.md)
 
 ### Authorization
 
@@ -79,7 +81,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: text/plain, application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 

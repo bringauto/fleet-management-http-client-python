@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create_hw**
-> create_hw(platform_hw)
+> PlatformHW create_hw(platform_hw)
 
 Create a new Platform HW object.
 
@@ -53,7 +53,9 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
     try:
         # Create a new Platform HW object.
-        api_instance.create_hw(platform_hw)
+        api_response = api_instance.create_hw(platform_hw)
+        print("The response of PlatformHWApi->create_hw:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling PlatformHWApi->create_hw: %s\n" % e)
 ```
@@ -69,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**PlatformHW**](PlatformHW.md)
 
 ### Authorization
 
@@ -78,7 +80,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: text/plain, application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 

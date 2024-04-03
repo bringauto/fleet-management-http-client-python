@@ -430,7 +430,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **redefine_route_visualization**
-> redefine_route_visualization(route_visualization)
+> RouteVisualization redefine_route_visualization(route_visualization)
 
 Redefine Route Visualization for an existing Route.
 
@@ -472,7 +472,9 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
     try:
         # Redefine Route Visualization for an existing Route.
-        api_instance.redefine_route_visualization(route_visualization)
+        api_response = api_instance.redefine_route_visualization(route_visualization)
+        print("The response of RouteApi->redefine_route_visualization:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling RouteApi->redefine_route_visualization: %s\n" % e)
 ```
@@ -488,7 +490,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**RouteVisualization**](RouteVisualization.md)
 
 ### Authorization
 
@@ -497,7 +499,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: text/plain, application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **create_order_state**
-> create_order_state(order_state)
+> OrderState create_order_state(order_state)
 
 Add a new Order State.
 
@@ -52,7 +52,9 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
     try:
         # Add a new Order State.
-        api_instance.create_order_state(order_state)
+        api_response = api_instance.create_order_state(order_state)
+        print("The response of OrderStateApi->create_order_state:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling OrderStateApi->create_order_state: %s\n" % e)
 ```
@@ -68,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**OrderState**](OrderState.md)
 
 ### Authorization
 
@@ -77,7 +79,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: text/plain, application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 
