@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **priority** | **str** | Priority (low, normal, high) | [optional] [default to 'normal']
 **user_id** | **int** |  | 
+**timestamp** | **int** | A Unix timestamp in milliseconds. The timestamp is used to determine the time of creation of an object. | [optional] 
 **car_id** | **int** |  | 
 **notification** | **str** |  | [optional] 
 **target_stop_id** | **int** |  | 

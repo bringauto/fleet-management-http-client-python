@@ -5,7 +5,7 @@ All URIs are relative to */v2/management*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_order_state**](OrderStateApi.md#create_order_state) | **POST** /orderstate | Add a new Order State.
-[**get_all_order_states**](OrderStateApi.md#get_all_order_states) | **GET** /orderstate | Find one or all Order States for all existing Orders.
+[**get_all_order_states**](OrderStateApi.md#get_all_order_states) | **GET** /orderstate | Find Order States for all existing Orders.
 [**get_order_states**](OrderStateApi.md#get_order_states) | **GET** /orderstate/{orderId} | Find all Order States for a particular Order specified by its ID.
 
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The new Order State has been successfully added. |  -  |
+**200** | The new Order State has been successfully posted. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 # **get_all_order_states**
 > List[OrderState] get_all_order_states(wait=wait, since=since)
 
-Find one or all Order States for all existing Orders.
+Find Order States for all existing Orders.
 
 ### Example
 
@@ -133,11 +133,11 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.OrderStateApi(api_client)
-    wait = False # bool | Applies to GET methods when no order statuses would be returned at the moment of request. If wait=true, \\ the request will wait for the next order state to be created and then return it. If wait=False or unspecified, the request will return \\ an empty list. (optional) (default to False)
-    since = 56 # int | A Unix timestamp in milliseconds. If specified, only states created at the time or later will be returned. If unspecified, all states are returned (since is set to 0 in that case). (optional)
+    wait = False # bool | Applies to GET methods when no objects would be returned at the moment of request. If wait=true, \\ the request will wait for the next object to be created and then returns it. If wait=False or unspecified, the request will return \\ an empty list. (optional) (default to False)
+    since = 56 # int | A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). (optional)
 
     try:
-        # Find one or all Order States for all existing Orders.
+        # Find Order States for all existing Orders.
         api_response = api_instance.get_all_order_states(wait=wait, since=since)
         print("The response of OrderStateApi->get_all_order_states:\n")
         pprint(api_response)
@@ -152,8 +152,8 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **wait** | **bool**| Applies to GET methods when no order statuses would be returned at the moment of request. If wait&#x3D;true, \\ the request will wait for the next order state to be created and then return it. If wait&#x3D;False or unspecified, the request will return \\ an empty list. | [optional] [default to False]
- **since** | **int**| A Unix timestamp in milliseconds. If specified, only states created at the time or later will be returned. If unspecified, all states are returned (since is set to 0 in that case). | [optional] 
+ **wait** | **bool**| Applies to GET methods when no objects would be returned at the moment of request. If wait&#x3D;true, \\ the request will wait for the next object to be created and then returns it. If wait&#x3D;False or unspecified, the request will return \\ an empty list. | [optional] [default to False]
+ **since** | **int**| A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). | [optional] 
 
 ### Return type
 
@@ -219,8 +219,8 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.OrderStateApi(api_client)
     order_id = 1 # int | ID of the Order for which to find the Order States.
-    wait = False # bool | Applies to GET methods when no order statuses would be returned at the moment of request. If wait=true, \\ the request will wait for the next order state to be created and then return it. If wait=False or unspecified, the request will return \\ an empty list. (optional) (default to False)
-    since = 56 # int | A Unix timestamp in milliseconds. If specified, only states created at the time or later will be returned. If unspecified, all states are returned (since is set to 0 in that case). (optional)
+    wait = False # bool | Applies to GET methods when no objects would be returned at the moment of request. If wait=true, \\ the request will wait for the next object to be created and then returns it. If wait=False or unspecified, the request will return \\ an empty list. (optional) (default to False)
+    since = 56 # int | A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). (optional)
 
     try:
         # Find all Order States for a particular Order specified by its ID.
@@ -239,8 +239,8 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order_id** | **int**| ID of the Order for which to find the Order States. | 
- **wait** | **bool**| Applies to GET methods when no order statuses would be returned at the moment of request. If wait&#x3D;true, \\ the request will wait for the next order state to be created and then return it. If wait&#x3D;False or unspecified, the request will return \\ an empty list. | [optional] [default to False]
- **since** | **int**| A Unix timestamp in milliseconds. If specified, only states created at the time or later will be returned. If unspecified, all states are returned (since is set to 0 in that case). | [optional] 
+ **wait** | **bool**| Applies to GET methods when no objects would be returned at the moment of request. If wait&#x3D;true, \\ the request will wait for the next object to be created and then returns it. If wait&#x3D;False or unspecified, the request will return \\ an empty list. | [optional] [default to False]
+ **since** | **int**| A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). | [optional] 
 
 ### Return type
 
@@ -259,7 +259,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | All the Order States for the Order specified by its ID have been returned. |  -  |
+**200** | Order States for the Order specified by its ID have been found, sorted by their creation timestamp \\ from the oldest to the newest and returned. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not found |  -  |

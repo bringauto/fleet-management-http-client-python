@@ -5,10 +5,10 @@ All URIs are relative to */v2/management*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_order**](OrderApi.md#create_order) | **POST** /order | Create a new Order.
-[**delete_order**](OrderApi.md#delete_order) | **DELETE** /order/{orderId} | Delete an Order with the specified ID.
-[**get_order**](OrderApi.md#get_order) | **GET** /order/{orderId} | Find an existing Order by its ID and return it.
+[**delete_order**](OrderApi.md#delete_order) | **DELETE** /order/{carId}/{orderId} | Delete an Order identified by its ID and ID of a car to which it is assigned.
+[**get_car_orders**](OrderApi.md#get_car_orders) | **GET** /order/{carId} | Find existing Orders by the corresponding Car ID and return them.
+[**get_order**](OrderApi.md#get_order) | **GET** /order/{carId}/{orderId} | Find an existing Order by the car ID and the order ID and return it.
 [**get_orders**](OrderApi.md#get_orders) | **GET** /order | Find all currently existing Orders.
-[**get_updated_orders**](OrderApi.md#get_updated_orders) | **GET** /order/wait/{carId} | Get updated Orders for a given Car specified by its ID.
 
 
 # **create_order**
@@ -96,9 +96,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_order**
-> delete_order(order_id)
+> delete_order(car_id, order_id)
 
-Delete an Order with the specified ID.
+Delete an Order identified by its ID and ID of a car to which it is assigned.
 
 ### Example
 
@@ -133,11 +133,12 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.OrderApi(api_client)
-    order_id = 1 # int | ID of the Order to be deleted.
+    car_id = 1 # int | ID of the Car to which the Order is assigned.
+    order_id = 1 # int | ID of the Order to be returned.
 
     try:
-        # Delete an Order with the specified ID.
-        api_instance.delete_order(order_id)
+        # Delete an Order identified by its ID and ID of a car to which it is assigned.
+        api_instance.delete_order(car_id, order_id)
     except Exception as e:
         print("Exception when calling OrderApi->delete_order: %s\n" % e)
 ```
@@ -149,7 +150,8 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **order_id** | **int**| ID of the Order to be deleted. | 
+ **car_id** | **int**| ID of the Car to which the Order is assigned. | 
+ **order_id** | **int**| ID of the Order to be returned. | 
 
 ### Return type
 
@@ -178,10 +180,10 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_order**
-> Order get_order(order_id)
+# **get_car_orders**
+> Order get_car_orders(car_id, since=since)
 
-Find an existing Order by its ID and return it.
+Find existing Orders by the corresponding Car ID and return them.
 
 ### Example
 
@@ -217,15 +219,16 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.OrderApi(api_client)
-    order_id = 1 # int | ID of the Order to be returned.
+    car_id = 1 # int | ID of the Car for which Orders shall be returned.
+    since = 56 # int | A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). (optional)
 
     try:
-        # Find an existing Order by its ID and return it.
-        api_response = api_instance.get_order(order_id)
-        print("The response of OrderApi->get_order:\n")
+        # Find existing Orders by the corresponding Car ID and return them.
+        api_response = api_instance.get_car_orders(car_id, since=since)
+        print("The response of OrderApi->get_car_orders:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling OrderApi->get_order: %s\n" % e)
+        print("Exception when calling OrderApi->get_car_orders: %s\n" % e)
 ```
 
 
@@ -235,7 +238,8 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **order_id** | **int**| ID of the Order to be returned. | 
+ **car_id** | **int**| ID of the Car for which Orders shall be returned. | 
+ **since** | **int**| A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). | [optional] 
 
 ### Return type
 
@@ -254,7 +258,96 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The Order with the specified ID has been found and returned. |  -  |
+**200** | The Orders assigned to the Car with the given ID have been found, sorted by their creation timestamp from oldest to newest and returned. |  -  |
+**400** | Bad request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not found |  -  |
+**0** | Unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_order**
+> Order get_order(car_id, order_id, since=since)
+
+Find an existing Order by the car ID and the order ID and return it.
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+* Api Key Authentication (APIKeyAuth):
+
+```python
+import fleet_management_http_client_python
+from fleet_management_http_client_python.models.order import Order
+from fleet_management_http_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /v2/management
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fleet_management_http_client_python.Configuration(
+    host = "/v2/management"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Configure API key authorization: APIKeyAuth
+configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with fleet_management_http_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fleet_management_http_client_python.OrderApi(api_client)
+    car_id = 1 # int | ID of the Car to which the Order is assigned.
+    order_id = 1 # int | ID of the Order to be returned.
+    since = 56 # int | A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). (optional)
+
+    try:
+        # Find an existing Order by the car ID and the order ID and return it.
+        api_response = api_instance.get_order(car_id, order_id, since=since)
+        print("The response of OrderApi->get_order:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrderApi->get_order: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **car_id** | **int**| ID of the Car to which the Order is assigned. | 
+ **order_id** | **int**| ID of the Order to be returned. | 
+ **since** | **int**| A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). | [optional] 
+
+### Return type
+
+[**Order**](Order.md)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode), [APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The Order with the specified car ID and order ID has been found and returned. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -264,7 +357,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_orders**
-> List[Order] get_orders()
+> List[Order] get_orders(since=since)
 
 Find all currently existing Orders.
 
@@ -302,10 +395,11 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.OrderApi(api_client)
+    since = 56 # int | A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). (optional)
 
     try:
         # Find all currently existing Orders.
-        api_response = api_instance.get_orders()
+        api_response = api_instance.get_orders(since=since)
         print("The response of OrderApi->get_orders:\n")
         pprint(api_response)
     except Exception as e:
@@ -316,7 +410,10 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **since** | **int**| A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). | [optional] 
 
 ### Return type
 
@@ -335,95 +432,9 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | All the currently existing Orders have been returned. |  -  |
+**200** | All the currently existing Orders have been sorted by their creation timestamp from the oldest to newest and returned. |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
-**0** | Unexpected error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_updated_orders**
-> Order get_updated_orders(car_id)
-
-Get updated Orders for a given Car specified by its ID.
-
-### Example
-
-* OAuth Authentication (oAuth2AuthCode):
-* Api Key Authentication (APIKeyAuth):
-
-```python
-import fleet_management_http_client_python
-from fleet_management_http_client_python.models.order import Order
-from fleet_management_http_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to /v2/management
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fleet_management_http_client_python.Configuration(
-    host = "/v2/management"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Configure API key authorization: APIKeyAuth
-configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKeyAuth'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with fleet_management_http_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fleet_management_http_client_python.OrderApi(api_client)
-    car_id = 1 # int | ID of the Car for which updated Orders are requested.
-
-    try:
-        # Get updated Orders for a given Car specified by its ID.
-        api_response = api_instance.get_updated_orders(car_id)
-        print("The response of OrderApi->get_updated_orders:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling OrderApi->get_updated_orders: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **car_id** | **int**| ID of the Car for which updated Orders are requested. | 
-
-### Return type
-
-[**Order**](Order.md)
-
-### Authorization
-
-[oAuth2AuthCode](../README.md#oAuth2AuthCode), [APIKeyAuth](../README.md#APIKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | All the updated Orders for the specified Car have been returned. |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not found |  -  |
-**408** | Request timeout |  -  |
 **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

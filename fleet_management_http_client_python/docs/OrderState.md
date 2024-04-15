@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **status** | [**OrderStatus**](OrderStatus.md) |  | 
 **order_id** | **int** |  | 
-**timestamp** | **int** | A Unix timestamp in milliseconds. | [optional] 
+**timestamp** | **int** | A Unix timestamp in milliseconds. The timestamp is used to determine the time of creation of an object. | [optional] 
 
 ## Example
 

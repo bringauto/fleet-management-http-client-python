@@ -5,8 +5,8 @@ All URIs are relative to */v2/management*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_hw**](PlatformHWApi.md#create_hw) | **POST** /platformhw | Create a new Platform HW object.
-[**delete_hw**](PlatformHWApi.md#delete_hw) | **DELETE** /platformhw/{platformHwId} | Delete Platform HW with given ID.
-[**get_hw**](PlatformHWApi.md#get_hw) | **GET** /platformhw/{platformHwId} | Find Platform HW with given ID.
+[**delete_hw**](PlatformHWApi.md#delete_hw) | **DELETE** /platformhw/{platformHwId} | Delete Platform HW with the given ID.
+[**get_hw**](PlatformHWApi.md#get_hw) | **GET** /platformhw/{platformHwId} | Find Platform HW with the given ID.
 [**get_hws**](PlatformHWApi.md#get_hws) | **GET** /platformhw | Find and return all existing Platform HW.
 
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 # **delete_hw**
 > delete_hw(platform_hw_id)
 
-Delete Platform HW with given ID.
+Delete Platform HW with the given ID.
 
 ### Example
 
@@ -135,7 +135,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     platform_hw_id = 1 # int | ID of Platform HW to delete.
 
     try:
-        # Delete Platform HW with given ID.
+        # Delete Platform HW with the given ID.
         api_instance.delete_hw(platform_hw_id)
     except Exception as e:
         print("Exception when calling PlatformHWApi->delete_hw: %s\n" % e)
@@ -180,7 +180,7 @@ void (empty response body)
 # **get_hw**
 > PlatformHW get_hw(platform_hw_id)
 
-Find Platform HW with given ID.
+Find Platform HW with the given ID.
 
 ### Example
 
@@ -219,7 +219,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     platform_hw_id = 1 # int | ID of the Platform HW to return.
 
     try:
-        # Find Platform HW with given ID.
+        # Find Platform HW with the given ID.
         api_response = api_instance.get_hw(platform_hw_id)
         print("The response of PlatformHWApi->get_hw:\n")
         pprint(api_response)

@@ -7,6 +7,7 @@ Car State object structure
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
+**timestamp** | **int** | A Unix timestamp in milliseconds. The timestamp is used to determine the time of creation of an object. | [optional] 
 **status** | [**CarStatus**](CarStatus.md) |  | 
 **fuel** | **int** |  | [optional] [default to 0]
 **car_id** | **int** |  | 
