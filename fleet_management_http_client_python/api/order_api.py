@@ -622,7 +622,7 @@ class OrderApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Order:
+    ) -> List[Order]:
         """Find existing Orders by the corresponding Car ID and return them.
 
 
@@ -662,7 +662,7 @@ class OrderApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Order",
+            '200': "List[Order]",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -696,7 +696,7 @@ class OrderApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Order]:
+    ) -> ApiResponse[List[Order]]:
         """Find existing Orders by the corresponding Car ID and return them.
 
 
@@ -736,7 +736,7 @@ class OrderApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Order",
+            '200': "List[Order]",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -810,7 +810,7 @@ class OrderApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Order",
+            '200': "List[Order]",
             '400': "Error",
             '401': "Error",
             '403': "Error",

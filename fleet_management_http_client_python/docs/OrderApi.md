@@ -181,7 +181,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_car_orders**
-> Order get_car_orders(car_id, since=since)
+> List[Order] get_car_orders(car_id, since=since)
 
 Find existing Orders by the corresponding Car ID and return them.
 
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Order**](Order.md)
+[**List[Order]**](Order.md)
 
 ### Authorization
 
