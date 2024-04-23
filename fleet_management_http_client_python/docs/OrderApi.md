@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_order**
-> Order get_order(car_id, order_id, since=since)
+> Order get_order(car_id, order_id)
 
 Find an existing Order by the car ID and the order ID and return it.
 
@@ -308,11 +308,10 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     api_instance = fleet_management_http_client_python.OrderApi(api_client)
     car_id = 1 # int | ID of the Car to which the Order is assigned.
     order_id = 1 # int | ID of the Order to be returned.
-    since = 56 # int | A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). (optional)
 
     try:
         # Find an existing Order by the car ID and the order ID and return it.
-        api_response = api_instance.get_order(car_id, order_id, since=since)
+        api_response = api_instance.get_order(car_id, order_id)
         print("The response of OrderApi->get_order:\n")
         pprint(api_response)
     except Exception as e:
@@ -328,7 +327,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **car_id** | **int**| ID of the Car to which the Order is assigned. | 
  **order_id** | **int**| ID of the Order to be returned. | 
- **since** | **int**| A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). | [optional] 
 
 ### Return type
 

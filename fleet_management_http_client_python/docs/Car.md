@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **car_admin_phone** | [**MobilePhone**](MobilePhone.md) |  | 
 **default_route_id** | **int** |  | [optional] 
 **under_test** | **bool** |  | [optional] [default to True]
+**last_state** | [**CarState**](CarState.md) |  | [optional] 
 
 ## Example
 

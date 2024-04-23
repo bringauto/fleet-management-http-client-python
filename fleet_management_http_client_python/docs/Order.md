@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **target_stop_id** | **int** |  | 
 **stop_route_id** | **int** |  | 
 **notification_phone** | [**MobilePhone**](MobilePhone.md) |  | [optional] 
+**last_state** | [**OrderState**](OrderState.md) |  | [optional] 
 
 ## Example
 
