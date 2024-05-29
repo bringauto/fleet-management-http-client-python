@@ -4,17 +4,17 @@ All URIs are relative to */v2/management*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_order**](OrderApi.md#create_order) | **POST** /order | Create a new Order.
+[**create_orders**](OrderApi.md#create_orders) | **POST** /order | Create new Orders.
 [**delete_order**](OrderApi.md#delete_order) | **DELETE** /order/{carId}/{orderId} | Delete an Order identified by its ID and ID of a car to which it is assigned.
 [**get_car_orders**](OrderApi.md#get_car_orders) | **GET** /order/{carId} | Find existing Orders by the corresponding Car ID and return them.
 [**get_order**](OrderApi.md#get_order) | **GET** /order/{carId}/{orderId} | Find an existing Order by the car ID and the order ID and return it.
 [**get_orders**](OrderApi.md#get_orders) | **GET** /order | Find all currently existing Orders.
 
 
-# **create_order**
-> Order create_order(order)
+# **create_orders**
+> List[Order] create_orders(order)
 
-Create a new Order.
+Create new Orders.
 
 ### Example
 
@@ -50,15 +50,15 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.OrderApi(api_client)
-    order = fleet_management_http_client_python.Order() # Order | Order model in JSON format.
+    order = [fleet_management_http_client_python.Order()] # List[Order] | A list of Order models in JSON format.
 
     try:
-        # Create a new Order.
-        api_response = api_instance.create_order(order)
-        print("The response of OrderApi->create_order:\n")
+        # Create new Orders.
+        api_response = api_instance.create_orders(order)
+        print("The response of OrderApi->create_orders:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling OrderApi->create_order: %s\n" % e)
+        print("Exception when calling OrderApi->create_orders: %s\n" % e)
 ```
 
 
@@ -68,11 +68,11 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **order** | [**Order**](Order.md)| Order model in JSON format. | 
+ **order** | [**List[Order]**](Order.md)| A list of Order models in JSON format. | 
 
 ### Return type
 
-[**Order**](Order.md)
+[**List[Order]**](Order.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The new Order has been successfully created. |  -  |
+**200** | The new Orders have been successfully created. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

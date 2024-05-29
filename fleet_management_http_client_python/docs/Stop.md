@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | 
 **position** | [**GNSSPosition**](GNSSPosition.md) |  | 
 **notification_phone** | [**MobilePhone**](MobilePhone.md) |  | [optional] 
+**is_auto_stop** | **bool** | If set to true, an Order to this Stop is always automatically created when creating Orders for the Route containing this Stop. | [optional] [default to False]
 
 ## Example
 

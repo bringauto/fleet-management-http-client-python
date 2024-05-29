@@ -4,15 +4,15 @@ All URIs are relative to */v2/management*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_car_state**](CarStateApi.md#add_car_state) | **POST** /carstate | Add a new Car State.
+[**create_car_states**](CarStateApi.md#create_car_states) | **POST** /carstate | Add new Car States.
 [**get_all_car_states**](CarStateApi.md#get_all_car_states) | **GET** /carstate | Find one or all Car States for all existing Cars.
 [**get_car_states**](CarStateApi.md#get_car_states) | **GET** /carstate/{carId} | Find one or all Car States for a Car with given ID.
 
 
-# **add_car_state**
-> add_car_state(car_state)
+# **create_car_states**
+> create_car_states(car_state)
 
-Add a new Car State.
+Add new Car States.
 
 ### Example
 
@@ -48,13 +48,13 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.CarStateApi(api_client)
-    car_state = fleet_management_http_client_python.CarState() # CarState | Car State model in JSON format.
+    car_state = [fleet_management_http_client_python.CarState()] # List[CarState] | A list of Car State model in JSON format.
 
     try:
-        # Add a new Car State.
-        api_instance.add_car_state(car_state)
+        # Add new Car States.
+        api_instance.create_car_states(car_state)
     except Exception as e:
-        print("Exception when calling CarStateApi->add_car_state: %s\n" % e)
+        print("Exception when calling CarStateApi->create_car_states: %s\n" % e)
 ```
 
 
@@ -64,7 +64,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **car_state** | [**CarState**](CarState.md)| Car State model in JSON format. | 
+ **car_state** | [**List[CarState]**](CarState.md)| A list of Car State model in JSON format. | 
 
 ### Return type
 
@@ -83,7 +83,7 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The new Car State has been successfully added. |  -  |
+**200** | The new Car States have been successfully added. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

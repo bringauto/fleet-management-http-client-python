@@ -4,17 +4,17 @@ All URIs are relative to */v2/management*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_stop**](StopApi.md#create_stop) | **POST** /stop | Create a new Stop.
+[**create_stops**](StopApi.md#create_stops) | **POST** /stop | Create new Stops.
 [**delete_stop**](StopApi.md#delete_stop) | **DELETE** /stop/{stopId} | Delete a Stop with the specified ID.
 [**get_stop**](StopApi.md#get_stop) | **GET** /stop/{stopId} | Find and return a single Stop by its ID.
 [**get_stops**](StopApi.md#get_stops) | **GET** /stop | Find and return all existing Stops.
-[**update_stop**](StopApi.md#update_stop) | **PUT** /stop | Update already existing Stop.
+[**update_stops**](StopApi.md#update_stops) | **PUT** /stop | Update already existing Stops.
 
 
-# **create_stop**
-> Stop create_stop(stop)
+# **create_stops**
+> List[Stop] create_stops(stop)
 
-Create a new Stop.
+Create new Stops.
 
 ### Example
 
@@ -50,15 +50,15 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.StopApi(api_client)
-    stop = fleet_management_http_client_python.Stop() # Stop | Stop model in JSON format.
+    stop = [fleet_management_http_client_python.Stop()] # List[Stop] | A list of Stop models in JSON format.
 
     try:
-        # Create a new Stop.
-        api_response = api_instance.create_stop(stop)
-        print("The response of StopApi->create_stop:\n")
+        # Create new Stops.
+        api_response = api_instance.create_stops(stop)
+        print("The response of StopApi->create_stops:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling StopApi->create_stop: %s\n" % e)
+        print("Exception when calling StopApi->create_stops: %s\n" % e)
 ```
 
 
@@ -68,11 +68,11 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stop** | [**Stop**](Stop.md)| Stop model in JSON format. | 
+ **stop** | [**List[Stop]**](Stop.md)| A list of Stop models in JSON format. | 
 
 ### Return type
 
-[**Stop**](Stop.md)
+[**List[Stop]**](Stop.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The Stop has been successfully created. |  -  |
+**200** | The Stops have been successfully created. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -342,10 +342,10 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_stop**
-> update_stop(stop)
+# **update_stops**
+> update_stops(stop)
 
-Update already existing Stop.
+Update already existing Stops.
 
 ### Example
 
@@ -381,13 +381,13 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.StopApi(api_client)
-    stop = fleet_management_http_client_python.Stop() # Stop | JSON representation of the updated Stop.
+    stop = [fleet_management_http_client_python.Stop()] # List[Stop] | JSON representation of a list of the Stops with updated data.
 
     try:
-        # Update already existing Stop.
-        api_instance.update_stop(stop)
+        # Update already existing Stops.
+        api_instance.update_stops(stop)
     except Exception as e:
-        print("Exception when calling StopApi->update_stop: %s\n" % e)
+        print("Exception when calling StopApi->update_stops: %s\n" % e)
 ```
 
 
@@ -397,7 +397,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stop** | [**Stop**](Stop.md)| JSON representation of the updated Stop. | 
+ **stop** | [**List[Stop]**](Stop.md)| JSON representation of a list of the Stops with updated data. | 
 
 ### Return type
 
@@ -416,7 +416,7 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The Stop has been successfully updated. |  -  |
+**200** | The Stops have been successfully updated. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

@@ -4,17 +4,17 @@ All URIs are relative to */v2/management*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_car**](CarApi.md#create_car) | **POST** /car | Create a new Car object.
+[**create_cars**](CarApi.md#create_cars) | **POST** /car | Create new Car objects.
 [**delete_car**](CarApi.md#delete_car) | **DELETE** /car/{carId} | Delete a Car identified by its ID.
 [**get_car**](CarApi.md#get_car) | **GET** /car/{carId} | Find a single Car by its ID.
 [**get_cars**](CarApi.md#get_cars) | **GET** /car | Find and return all existing Cars.
-[**update_car**](CarApi.md#update_car) | **PUT** /car | Update already existing Car.
+[**update_cars**](CarApi.md#update_cars) | **PUT** /car | Update already existing Cars.
 
 
-# **create_car**
-> Car create_car(car)
+# **create_cars**
+> List[Car] create_cars(car)
 
-Create a new Car object.
+Create new Car objects.
 
 ### Example
 
@@ -50,15 +50,15 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.CarApi(api_client)
-    car = fleet_management_http_client_python.Car() # Car | A Car model in JSON format.
+    car = [fleet_management_http_client_python.Car()] # List[Car] | A list of Car models in JSON format.
 
     try:
-        # Create a new Car object.
-        api_response = api_instance.create_car(car)
-        print("The response of CarApi->create_car:\n")
+        # Create new Car objects.
+        api_response = api_instance.create_cars(car)
+        print("The response of CarApi->create_cars:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CarApi->create_car: %s\n" % e)
+        print("Exception when calling CarApi->create_cars: %s\n" % e)
 ```
 
 
@@ -68,11 +68,11 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **car** | [**Car**](Car.md)| A Car model in JSON format. | 
+ **car** | [**List[Car]**](Car.md)| A list of Car models in JSON format. | 
 
 ### Return type
 
-[**Car**](Car.md)
+[**List[Car]**](Car.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The Car has been successfully created. |  -  |
+**200** | The Cars have been successfully created. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -342,10 +342,10 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_car**
-> update_car(car)
+# **update_cars**
+> update_cars(car)
 
-Update already existing Car.
+Update already existing Cars.
 
 ### Example
 
@@ -381,13 +381,13 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.CarApi(api_client)
-    car = fleet_management_http_client_python.Car() # Car | JSON representation of the updated Car.
+    car = [fleet_management_http_client_python.Car()] # List[Car] | JSON representation of a list of the Cars with updated data.
 
     try:
-        # Update already existing Car.
-        api_instance.update_car(car)
+        # Update already existing Cars.
+        api_instance.update_cars(car)
     except Exception as e:
-        print("Exception when calling CarApi->update_car: %s\n" % e)
+        print("Exception when calling CarApi->update_cars: %s\n" % e)
 ```
 
 
@@ -397,7 +397,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **car** | [**Car**](Car.md)| JSON representation of the updated Car. | 
+ **car** | [**List[Car]**](Car.md)| JSON representation of a list of the Cars with updated data. | 
 
 ### Return type
 
@@ -416,7 +416,7 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The Car has been successfully updated. |  -  |
+**200** | The Cars have been successfully updated. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

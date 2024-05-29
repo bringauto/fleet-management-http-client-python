@@ -4,19 +4,19 @@ All URIs are relative to */v2/management*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_route**](RouteApi.md#create_route) | **POST** /route | Create a new Route.
+[**create_routes**](RouteApi.md#create_routes) | **POST** /route | Create new Routes.
 [**delete_route**](RouteApi.md#delete_route) | **DELETE** /route/{routeId} | Delete a Route with the specified ID.
 [**get_route**](RouteApi.md#get_route) | **GET** /route/{routeId} | Find a single Route with the specified ID.
 [**get_route_visualization**](RouteApi.md#get_route_visualization) | **GET** /route-visualization/{routeId} | Find Route Visualization for a Route identified by the route&#39;s ID.
 [**get_routes**](RouteApi.md#get_routes) | **GET** /route | Find and return all existing Routes.
-[**redefine_route_visualization**](RouteApi.md#redefine_route_visualization) | **POST** /route-visualization | Redefine Route Visualization for an existing Route.
-[**update_route**](RouteApi.md#update_route) | **PUT** /route | Update already existing Route.
+[**redefine_route_visualizations**](RouteApi.md#redefine_route_visualizations) | **POST** /route-visualization | Redefine Route Visualizations for existing Routes.
+[**update_routes**](RouteApi.md#update_routes) | **PUT** /route | Update already existing Routes.
 
 
-# **create_route**
-> Route create_route(route)
+# **create_routes**
+> List[Route] create_routes(route)
 
-Create a new Route.
+Create new Routes.
 
 ### Example
 
@@ -52,15 +52,15 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.RouteApi(api_client)
-    route = fleet_management_http_client_python.Route() # Route | Route model in JSON format.
+    route = [fleet_management_http_client_python.Route()] # List[Route] | A list of Route models in JSON format.
 
     try:
-        # Create a new Route.
-        api_response = api_instance.create_route(route)
-        print("The response of RouteApi->create_route:\n")
+        # Create new Routes.
+        api_response = api_instance.create_routes(route)
+        print("The response of RouteApi->create_routes:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling RouteApi->create_route: %s\n" % e)
+        print("Exception when calling RouteApi->create_routes: %s\n" % e)
 ```
 
 
@@ -70,11 +70,11 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **route** | [**Route**](Route.md)| Route model in JSON format. | 
+ **route** | [**List[Route]**](Route.md)| A list of Route models in JSON format. | 
 
 ### Return type
 
-[**Route**](Route.md)
+[**List[Route]**](Route.md)
 
 ### Authorization
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The Route has been successfully created. |  -  |
+**200** | The Routes have been successfully created. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -429,10 +429,10 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **redefine_route_visualization**
-> RouteVisualization redefine_route_visualization(route_visualization)
+# **redefine_route_visualizations**
+> RouteVisualization redefine_route_visualizations(route_visualization)
 
-Redefine Route Visualization for an existing Route.
+Redefine Route Visualizations for existing Routes.
 
 ### Example
 
@@ -468,15 +468,15 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.RouteApi(api_client)
-    route_visualization = fleet_management_http_client_python.RouteVisualization() # RouteVisualization | Route Visualization model in JSON format.
+    route_visualization = [fleet_management_http_client_python.RouteVisualization()] # List[RouteVisualization] | A list of Route Visualization models in JSON format.
 
     try:
-        # Redefine Route Visualization for an existing Route.
-        api_response = api_instance.redefine_route_visualization(route_visualization)
-        print("The response of RouteApi->redefine_route_visualization:\n")
+        # Redefine Route Visualizations for existing Routes.
+        api_response = api_instance.redefine_route_visualizations(route_visualization)
+        print("The response of RouteApi->redefine_route_visualizations:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling RouteApi->redefine_route_visualization: %s\n" % e)
+        print("Exception when calling RouteApi->redefine_route_visualizations: %s\n" % e)
 ```
 
 
@@ -486,7 +486,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **route_visualization** | [**RouteVisualization**](RouteVisualization.md)| Route Visualization model in JSON format. | 
+ **route_visualization** | [**List[RouteVisualization]**](RouteVisualization.md)| A list of Route Visualization models in JSON format. | 
 
 ### Return type
 
@@ -505,7 +505,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The Route Visualization has been successfully redefined. |  -  |
+**200** | The Route Visualizations have been successfully redefined. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -514,10 +514,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_route**
-> update_route(route)
+# **update_routes**
+> update_routes(route)
 
-Update already existing Route.
+Update already existing Routes.
 
 ### Example
 
@@ -553,13 +553,13 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.RouteApi(api_client)
-    route = fleet_management_http_client_python.Route() # Route | JSON representation of the updated Route.
+    route = [fleet_management_http_client_python.Route()] # List[Route] | JSON representation of a list of the Routes with updated data.
 
     try:
-        # Update already existing Route.
-        api_instance.update_route(route)
+        # Update already existing Routes.
+        api_instance.update_routes(route)
     except Exception as e:
-        print("Exception when calling RouteApi->update_route: %s\n" % e)
+        print("Exception when calling RouteApi->update_routes: %s\n" % e)
 ```
 
 
@@ -569,7 +569,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **route** | [**Route**](Route.md)| JSON representation of the updated Route. | 
+ **route** | [**List[Route]**](Route.md)| JSON representation of a list of the Routes with updated data. | 
 
 ### Return type
 
@@ -588,7 +588,7 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The Route has been successfully updated. |  -  |
+**200** | The Routes have been successfully updated. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

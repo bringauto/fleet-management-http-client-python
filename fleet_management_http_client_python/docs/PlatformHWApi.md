@@ -4,16 +4,16 @@ All URIs are relative to */v2/management*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_hw**](PlatformHWApi.md#create_hw) | **POST** /platformhw | Create a new Platform HW object.
+[**create_hws**](PlatformHWApi.md#create_hws) | **POST** /platformhw | Create new Platform HW objects.
 [**delete_hw**](PlatformHWApi.md#delete_hw) | **DELETE** /platformhw/{platformHwId} | Delete Platform HW with the given ID.
 [**get_hw**](PlatformHWApi.md#get_hw) | **GET** /platformhw/{platformHwId} | Find Platform HW with the given ID.
 [**get_hws**](PlatformHWApi.md#get_hws) | **GET** /platformhw | Find and return all existing Platform HW.
 
 
-# **create_hw**
-> PlatformHW create_hw(platform_hw)
+# **create_hws**
+> PlatformHW create_hws(platform_hw)
 
-Create a new Platform HW object.
+Create new Platform HW objects.
 
 ### Example
 
@@ -49,15 +49,15 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.PlatformHWApi(api_client)
-    platform_hw = fleet_management_http_client_python.PlatformHW() # PlatformHW | Platform HW model in JSON format.
+    platform_hw = [fleet_management_http_client_python.PlatformHW()] # List[PlatformHW] | A list of Platform HW models in JSON format.
 
     try:
-        # Create a new Platform HW object.
-        api_response = api_instance.create_hw(platform_hw)
-        print("The response of PlatformHWApi->create_hw:\n")
+        # Create new Platform HW objects.
+        api_response = api_instance.create_hws(platform_hw)
+        print("The response of PlatformHWApi->create_hws:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PlatformHWApi->create_hw: %s\n" % e)
+        print("Exception when calling PlatformHWApi->create_hws: %s\n" % e)
 ```
 
 
@@ -67,7 +67,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **platform_hw** | [**PlatformHW**](PlatformHW.md)| Platform HW model in JSON format. | 
+ **platform_hw** | [**List[PlatformHW]**](PlatformHW.md)| A list of Platform HW models in JSON format. | 
 
 ### Return type
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The Platform HW has been successfully created. |  -  |
+**200** | The Platform HWs have been successfully created. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -334,7 +334,7 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | All the currently existing Platform HW have been returned. |  -  |
+**200** | All the currently existing Platform HWs have been returned. |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **0** | Unexpected error |  -  |
