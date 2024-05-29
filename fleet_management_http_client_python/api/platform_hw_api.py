@@ -56,7 +56,7 @@ class PlatformHWApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PlatformHW:
+    ) -> List[PlatformHW]:
         """Create new Platform HW objects.
 
 
@@ -93,7 +93,7 @@ class PlatformHWApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlatformHW",
+            '200': "List[PlatformHW]",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -125,7 +125,7 @@ class PlatformHWApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PlatformHW]:
+    ) -> ApiResponse[List[PlatformHW]]:
         """Create new Platform HW objects.
 
 
@@ -162,7 +162,7 @@ class PlatformHWApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlatformHW",
+            '200': "List[PlatformHW]",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -231,7 +231,7 @@ class PlatformHWApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlatformHW",
+            '200': "List[PlatformHW]",
             '400': "Error",
             '401': "Error",
             '403': "Error",

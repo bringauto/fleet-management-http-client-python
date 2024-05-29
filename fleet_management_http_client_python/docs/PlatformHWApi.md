@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create_hws**
-> PlatformHW create_hws(platform_hw)
+> List[PlatformHW] create_hws(platform_hw)
 
 Create new Platform HW objects.
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PlatformHW**](PlatformHW.md)
+[**List[PlatformHW]**](PlatformHW.md)
 
 ### Authorization
 
