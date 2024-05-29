@@ -430,7 +430,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **redefine_route_visualizations**
-> RouteVisualization redefine_route_visualizations(route_visualization)
+> List[RouteVisualization] redefine_route_visualizations(route_visualization)
 
 Redefine Route Visualizations for existing Routes.
 
@@ -490,7 +490,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RouteVisualization**](RouteVisualization.md)
+[**List[RouteVisualization]**](RouteVisualization.md)
 
 ### Authorization
 

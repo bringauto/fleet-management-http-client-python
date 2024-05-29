@@ -1391,7 +1391,7 @@ class RouteApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RouteVisualization:
+    ) -> List[RouteVisualization]:
         """Redefine Route Visualizations for existing Routes.
 
 
@@ -1428,7 +1428,7 @@ class RouteApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RouteVisualization",
+            '200': "List[RouteVisualization]",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -1461,7 +1461,7 @@ class RouteApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[RouteVisualization]:
+    ) -> ApiResponse[List[RouteVisualization]]:
         """Redefine Route Visualizations for existing Routes.
 
 
@@ -1498,7 +1498,7 @@ class RouteApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RouteVisualization",
+            '200': "List[RouteVisualization]",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -1568,7 +1568,7 @@ class RouteApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "RouteVisualization",
+            '200': "List[RouteVisualization]",
             '400': "Error",
             '401': "Error",
             '403': "Error",
