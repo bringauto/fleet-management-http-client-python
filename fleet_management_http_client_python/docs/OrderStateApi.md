@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **create_order_states**
-> OrderState create_order_states(order_state)
+> List[OrderState] create_order_states(order_state)
 
 Add new Order States.
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrderState**](OrderState.md)
+[**List[OrderState]**](OrderState.md)
 
 ### Authorization
 
