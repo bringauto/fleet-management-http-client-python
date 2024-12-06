@@ -43,7 +43,7 @@ class CarActionApi:
     @validate_call
     def get_car_action_states(
         self,
-        car_id: Annotated[StrictInt, Field(description="ID of the Car which should be unpaused.")],
+        car_id: Annotated[StrictInt, Field(description="ID of the Car for which to return the action states.")],
         wait: Annotated[Optional[StrictBool], Field(description="Applies to GET methods when no objects would be returned at the moment of request. If wait=true, \\ the request will wait for the next object to be created and then returns it. If wait=False or unspecified, the request will return \\ an empty list.")] = None,
         since: Annotated[Optional[StrictInt], Field(description="A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case).")] = None,
         last_n: Annotated[Optional[StrictInt], Field(description="If specified, only the last N objects will be returned. If unspecified, all objects are returned. \\ If some states have identical timestamps and they all do not fit into the maximum N states, only those with higher IDs are returned. If value smaller than 1 is provided, this filtering is ignored.")] = None,
@@ -63,7 +63,7 @@ class CarActionApi:
         """Finds car action states for a Car with given carId.
 
 
-        :param car_id: ID of the Car which should be unpaused. (required)
+        :param car_id: ID of the Car for which to return the action states. (required)
         :type car_id: int
         :param wait: Applies to GET methods when no objects would be returned at the moment of request. If wait=true, \\ the request will wait for the next object to be created and then returns it. If wait=False or unspecified, the request will return \\ an empty list.
         :type wait: bool
@@ -124,7 +124,7 @@ class CarActionApi:
     @validate_call
     def get_car_action_states_with_http_info(
         self,
-        car_id: Annotated[StrictInt, Field(description="ID of the Car which should be unpaused.")],
+        car_id: Annotated[StrictInt, Field(description="ID of the Car for which to return the action states.")],
         wait: Annotated[Optional[StrictBool], Field(description="Applies to GET methods when no objects would be returned at the moment of request. If wait=true, \\ the request will wait for the next object to be created and then returns it. If wait=False or unspecified, the request will return \\ an empty list.")] = None,
         since: Annotated[Optional[StrictInt], Field(description="A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case).")] = None,
         last_n: Annotated[Optional[StrictInt], Field(description="If specified, only the last N objects will be returned. If unspecified, all objects are returned. \\ If some states have identical timestamps and they all do not fit into the maximum N states, only those with higher IDs are returned. If value smaller than 1 is provided, this filtering is ignored.")] = None,
@@ -144,7 +144,7 @@ class CarActionApi:
         """Finds car action states for a Car with given carId.
 
 
-        :param car_id: ID of the Car which should be unpaused. (required)
+        :param car_id: ID of the Car for which to return the action states. (required)
         :type car_id: int
         :param wait: Applies to GET methods when no objects would be returned at the moment of request. If wait=true, \\ the request will wait for the next object to be created and then returns it. If wait=False or unspecified, the request will return \\ an empty list.
         :type wait: bool
@@ -205,7 +205,7 @@ class CarActionApi:
     @validate_call
     def get_car_action_states_without_preload_content(
         self,
-        car_id: Annotated[StrictInt, Field(description="ID of the Car which should be unpaused.")],
+        car_id: Annotated[StrictInt, Field(description="ID of the Car for which to return the action states.")],
         wait: Annotated[Optional[StrictBool], Field(description="Applies to GET methods when no objects would be returned at the moment of request. If wait=true, \\ the request will wait for the next object to be created and then returns it. If wait=False or unspecified, the request will return \\ an empty list.")] = None,
         since: Annotated[Optional[StrictInt], Field(description="A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case).")] = None,
         last_n: Annotated[Optional[StrictInt], Field(description="If specified, only the last N objects will be returned. If unspecified, all objects are returned. \\ If some states have identical timestamps and they all do not fit into the maximum N states, only those with higher IDs are returned. If value smaller than 1 is provided, this filtering is ignored.")] = None,
@@ -225,7 +225,7 @@ class CarActionApi:
         """Finds car action states for a Car with given carId.
 
 
-        :param car_id: ID of the Car which should be unpaused. (required)
+        :param car_id: ID of the Car for which to return the action states. (required)
         :type car_id: int
         :param wait: Applies to GET methods when no objects would be returned at the moment of request. If wait=true, \\ the request will wait for the next object to be created and then returns it. If wait=False or unspecified, the request will return \\ an empty list.
         :type wait: bool

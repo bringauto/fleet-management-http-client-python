@@ -57,6 +57,3 @@ fleet_management_http_client_python/models/route_visualization.py
 fleet_management_http_client_python/models/stop.py
 fleet_management_http_client_python/rest.py
 fleet_management_http_client_python/test/__init__.py
-fleet_management_http_client_python/test/test_car_action_api.py
-fleet_management_http_client_python/test/test_car_action_state.py
-fleet_management_http_client_python/test/test_car_action_status.py
