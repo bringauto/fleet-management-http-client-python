@@ -19,25 +19,20 @@ from enum import Enum
 from typing_extensions import Self
 
 
-class CarStatus(str, Enum):
+class CarActionStatus(str, Enum):
     """
-    Car Status enum
+    Car Action Status enum
     """
 
     """
     allowed enum values
     """
-    IDLE = 'idle'
-    CHARGING = 'charging'
-    OUT_OF_ORDER = 'out_of_order'
-    DRIVING = 'driving'
-    IN_STOP = 'in_stop'
-    PAUSED_BY_OBSTACLE = 'paused_by_obstacle'
-    PAUSED_BY_BUTTON = 'paused_by_button'
+    NORMAL = 'normal'
+    PAUSED = 'paused'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of CarStatus from a JSON string"""
+        """Create an instance of CarActionStatus from a JSON string"""
         return cls(json.loads(json_str))
 
 

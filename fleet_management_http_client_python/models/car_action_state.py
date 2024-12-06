@@ -18,23 +18,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from fleet_management_http_client_python.models.gnss_position import GNSSPosition
-from fleet_management_http_client_python.models.mobile_phone import MobilePhone
+from fleet_management_http_client_python.models.car_action_status import CarActionStatus
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Stop(BaseModel):
+class CarActionState(BaseModel):
     """
-    Stop object structure.
+    Car Action State object structure
     """ # noqa: E501
     id: Optional[StrictInt] = None
-    name: StrictStr
-    position: GNSSPosition
-    notification_phone: Optional[MobilePhone] = Field(default=None, alias="notificationPhone")
-    is_auto_stop: Optional[StrictBool] = Field(default=False, description="If set to true, an Order to this Stop is always automatically created when creating Orders for the Route containing this Stop.", alias="isAutoStop")
-    __properties: ClassVar[List[str]] = ["id", "name", "position", "notificationPhone", "isAutoStop"]
+    car_id: StrictInt = Field(alias="carId")
+    timestamp: Optional[StrictInt] = Field(default=None, description="A Unix timestamp in milliseconds. The timestamp is used to determine the time of creation of an object.")
+    action_status: CarActionStatus = Field(alias="actionStatus")
+    __properties: ClassVar[List[str]] = ["id", "carId", "timestamp", "actionStatus"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -54,7 +52,7 @@ class Stop(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Stop from a JSON string"""
+        """Create an instance of CarActionState from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,17 +73,11 @@ class Stop(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of position
-        if self.position:
-            _dict['position'] = self.position.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of notification_phone
-        if self.notification_phone:
-            _dict['notificationPhone'] = self.notification_phone.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Stop from a dict"""
+        """Create an instance of CarActionState from a dict"""
         if obj is None:
             return None
 
@@ -94,10 +86,9 @@ class Stop(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "name": obj.get("name"),
-            "position": GNSSPosition.from_dict(obj["position"]) if obj.get("position") is not None else None,
-            "notificationPhone": MobilePhone.from_dict(obj["notificationPhone"]) if obj.get("notificationPhone") is not None else None,
-            "isAutoStop": obj.get("isAutoStop") if obj.get("isAutoStop") is not None else False
+            "carId": obj.get("carId"),
+            "timestamp": obj.get("timestamp"),
+            "actionStatus": obj.get("actionStatus")
         })
         return _obj
 

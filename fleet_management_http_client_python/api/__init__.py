@@ -3,6 +3,7 @@
 # import apis into api package
 from fleet_management_http_client_python.api.api_api import ApiApi
 from fleet_management_http_client_python.api.car_api import CarApi
+from fleet_management_http_client_python.api.car_action_api import CarActionApi
 from fleet_management_http_client_python.api.car_state_api import CarStateApi
 from fleet_management_http_client_python.api.order_api import OrderApi
 from fleet_management_http_client_python.api.order_state_api import OrderStateApi
