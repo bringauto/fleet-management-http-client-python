@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pause_car**
-> CarActionState pause_car(car_id)
+> List[CarActionState] pause_car(car_id)
 
 Finds and pauses a Car with given carId, if not already paused. Sets car action status to PAUSED if it is not in PAUSED action status already.
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CarActionState**](CarActionState.md)
+[**List[CarActionState]**](CarActionState.md)
 
 ### Authorization
 
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **unpause_car**
-> CarActionState unpause_car(car_id)
+> List[CarActionState] unpause_car(car_id)
 
 Finds and unpauses a Car with given carId, if paused. Sets car action status to NORMAL only if it is in PAUSED action status.
 
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CarActionState**](CarActionState.md)
+[**List[CarActionState]**](CarActionState.md)
 
 ### Authorization
 
