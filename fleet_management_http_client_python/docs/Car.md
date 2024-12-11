@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **default_route_id** | **int** |  | [optional] 
 **under_test** | **bool** |  | [optional] [default to True]
 **last_state** | [**CarState**](CarState.md) |  | [optional] 
-**last_action_state** | [**CarActionState**](CarActionState.md) |  | [optional] 
 
 ## Example
 
