@@ -10,6 +10,7 @@ fleet_management_http_client_python/api/platform_hw_api.py
 fleet_management_http_client_python/api/route_api.py
 fleet_management_http_client_python/api/security_api.py
 fleet_management_http_client_python/api/stop_api.py
+fleet_management_http_client_python/api/tenant_api.py
 fleet_management_http_client_python/api_client.py
 fleet_management_http_client_python/api_response.py
 fleet_management_http_client_python/configuration.py
@@ -38,6 +39,8 @@ fleet_management_http_client_python/docs/RouteVisualization.md
 fleet_management_http_client_python/docs/SecurityApi.md
 fleet_management_http_client_python/docs/Stop.md
 fleet_management_http_client_python/docs/StopApi.md
+fleet_management_http_client_python/docs/Tenant.md
+fleet_management_http_client_python/docs/TenantApi.md
 fleet_management_http_client_python/exceptions.py
 fleet_management_http_client_python/models/__init__.py
 fleet_management_http_client_python/models/car.py
@@ -55,5 +58,8 @@ fleet_management_http_client_python/models/platform_hw.py
 fleet_management_http_client_python/models/route.py
 fleet_management_http_client_python/models/route_visualization.py
 fleet_management_http_client_python/models/stop.py
+fleet_management_http_client_python/models/tenant.py
 fleet_management_http_client_python/rest.py
 fleet_management_http_client_python/test/__init__.py
+fleet_management_http_client_python/test/test_tenant.py
+fleet_management_http_client_python/test/test_tenant_api.py

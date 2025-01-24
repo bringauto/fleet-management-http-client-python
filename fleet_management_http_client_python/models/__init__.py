@@ -30,3 +30,4 @@ from fleet_management_http_client_python.models.platform_hw import PlatformHW
 from fleet_management_http_client_python.models.route import Route
 from fleet_management_http_client_python.models.route_visualization import RouteVisualization
 from fleet_management_http_client_python.models.stop import Stop
+from fleet_management_http_client_python.models.tenant import Tenant
