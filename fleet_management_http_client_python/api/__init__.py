@@ -11,4 +11,5 @@ from fleet_management_http_client_python.api.platform_hw_api import PlatformHWAp
 from fleet_management_http_client_python.api.route_api import RouteApi
 from fleet_management_http_client_python.api.security_api import SecurityApi
 from fleet_management_http_client_python.api.stop_api import StopApi
+from fleet_management_http_client_python.api.tenant_api import TenantApi
 

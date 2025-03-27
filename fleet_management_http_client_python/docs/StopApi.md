@@ -133,7 +133,7 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.StopApi(api_client)
-    stop_id = 1 # int | ID of the Stop to be deleted.
+    stop_id = 56 # int | The Stop ID.
 
     try:
         # Delete a Stop with the specified ID.
@@ -149,7 +149,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stop_id** | **int**| ID of the Stop to be deleted. | 
+ **stop_id** | **int**| The Stop ID. | 
 
 ### Return type
 
@@ -217,7 +217,7 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.StopApi(api_client)
-    stop_id = 1 # int | ID of Stop to be returned.
+    stop_id = 56 # int | The Stop ID.
 
     try:
         # Find and return a single Stop by its ID.
@@ -235,7 +235,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stop_id** | **int**| ID of Stop to be returned. | 
+ **stop_id** | **int**| The Stop ID. | 
 
 ### Return type
 

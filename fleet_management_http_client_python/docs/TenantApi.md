@@ -1,18 +1,18 @@
-# fleet_management_http_client_python.CarActionApi
+# fleet_management_http_client_python.TenantApi
 
 All URIs are relative to */v2/management*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_car_action_states**](CarActionApi.md#get_car_action_states) | **GET** /action/car/{carId} | Finds car action states for a Car with given carId.
-[**pause_car**](CarActionApi.md#pause_car) | **POST** /action/car/{carId}/pause | Finds and pauses a Car with given carId, if not already paused. Sets car action status to PAUSED if it is not in PAUSED action status already.
-[**unpause_car**](CarActionApi.md#unpause_car) | **POST** /action/car/{carId}/unpause | Finds and unpauses a Car with given carId, if paused. Sets car action status to NORMAL only if it is in PAUSED action status.
+[**delete_tenant**](TenantApi.md#delete_tenant) | **DELETE** /tenant | Delete Tenant with the given ID.
+[**get_tenants**](TenantApi.md#get_tenants) | **GET** /tenant | Find and return all existing Tenants.
+[**set_tenant_cookie**](TenantApi.md#set_tenant_cookie) | **HEAD** /tenant/{tenantId} | Make the server send back a response with set-cookie header to set cookie equal to the name of the tenand with the tenantId.
 
 
-# **get_car_action_states**
-> List[CarActionState] get_car_action_states(car_id, wait=wait, since=since, last_n=last_n)
+# **delete_tenant**
+> delete_tenant(tenant_id)
 
-Finds car action states for a Car with given carId.
+Delete Tenant with the given ID.
 
 ### Example
 
@@ -21,7 +21,6 @@ Finds car action states for a Car with given carId.
 
 ```python
 import fleet_management_http_client_python
-from fleet_management_http_client_python.models.car_action_state import CarActionState
 from fleet_management_http_client_python.rest import ApiException
 from pprint import pprint
 
@@ -47,19 +46,14 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fleet_management_http_client_python.CarActionApi(api_client)
-    car_id = 56 # int | The car ID.
-    wait = False # bool | Applies to GET methods when no objects would be returned at the moment of request. If wait=true, \\ the request will wait for the next object to be created and then returns it. If wait=False or unspecified, the request will return \\ an empty list. (optional) (default to False)
-    since = 56 # int | A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). (optional)
-    last_n = 0 # int | If specified, only the last N objects will be returned. If unspecified, all objects are returned. \\ If some states have identical timestamps and they all do not fit into the maximum N states, only those with higher IDs are returned. If value smaller than 1 is provided, this filtering is ignored. (optional) (default to 0)
+    api_instance = fleet_management_http_client_python.TenantApi(api_client)
+    tenant_id = 56 # int | Tenant ID
 
     try:
-        # Finds car action states for a Car with given carId.
-        api_response = api_instance.get_car_action_states(car_id, wait=wait, since=since, last_n=last_n)
-        print("The response of CarActionApi->get_car_action_states:\n")
-        pprint(api_response)
+        # Delete Tenant with the given ID.
+        api_instance.delete_tenant(tenant_id)
     except Exception as e:
-        print("Exception when calling CarActionApi->get_car_action_states: %s\n" % e)
+        print("Exception when calling TenantApi->delete_tenant: %s\n" % e)
 ```
 
 
@@ -69,14 +63,11 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **car_id** | **int**| The car ID. | 
- **wait** | **bool**| Applies to GET methods when no objects would be returned at the moment of request. If wait&#x3D;true, \\ the request will wait for the next object to be created and then returns it. If wait&#x3D;False or unspecified, the request will return \\ an empty list. | [optional] [default to False]
- **since** | **int**| A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). | [optional] 
- **last_n** | **int**| If specified, only the last N objects will be returned. If unspecified, all objects are returned. \\ If some states have identical timestamps and they all do not fit into the maximum N states, only those with higher IDs are returned. If value smaller than 1 is provided, this filtering is ignored. | [optional] [default to 0]
+ **tenant_id** | **int**| Tenant ID | 
 
 ### Return type
 
-[**List[CarActionState]**](CarActionState.md)
+void (empty response body)
 
 ### Authorization
 
@@ -85,24 +76,26 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: text/plain, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successfully found Car Action States complying with the request parameters. |  -  |
+**200** | The Tenant with the specified ID has been deleted. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
 **404** | Not found |  -  |
+**405** | Method not allowed |  -  |
 **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **pause_car**
-> List[CarActionState] pause_car(car_id)
+# **get_tenants**
+> List[Tenant] get_tenants()
 
-Finds and pauses a Car with given carId, if not already paused. Sets car action status to PAUSED if it is not in PAUSED action status already.
+Find and return all existing Tenants.
 
 ### Example
 
@@ -111,7 +104,7 @@ Finds and pauses a Car with given carId, if not already paused. Sets car action 
 
 ```python
 import fleet_management_http_client_python
-from fleet_management_http_client_python.models.car_action_state import CarActionState
+from fleet_management_http_client_python.models.tenant import Tenant
 from fleet_management_http_client_python.rest import ApiException
 from pprint import pprint
 
@@ -137,30 +130,26 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fleet_management_http_client_python.CarActionApi(api_client)
-    car_id = 56 # int | The car ID.
+    api_instance = fleet_management_http_client_python.TenantApi(api_client)
 
     try:
-        # Finds and pauses a Car with given carId, if not already paused. Sets car action status to PAUSED if it is not in PAUSED action status already.
-        api_response = api_instance.pause_car(car_id)
-        print("The response of CarActionApi->pause_car:\n")
+        # Find and return all existing Tenants.
+        api_response = api_instance.get_tenants()
+        print("The response of TenantApi->get_tenants:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CarActionApi->pause_car: %s\n" % e)
+        print("Exception when calling TenantApi->get_tenants: %s\n" % e)
 ```
 
 
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **car_id** | **int**| The car ID. | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**List[CarActionState]**](CarActionState.md)
+[**List[Tenant]**](Tenant.md)
 
 ### Authorization
 
@@ -175,18 +164,17 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successfully paused the Car. |  -  |
-**400** | Bad request |  -  |
+**200** | All the currently existing Tenants have been returned. |  -  |
 **401** | Unauthorized |  -  |
-**404** | Not found |  -  |
+**403** | Forbidden |  -  |
 **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **unpause_car**
-> List[CarActionState] unpause_car(car_id)
+# **set_tenant_cookie**
+> set_tenant_cookie(tenant_id)
 
-Finds and unpauses a Car with given carId, if paused. Sets car action status to NORMAL only if it is in PAUSED action status.
+Make the server send back a response with set-cookie header to set cookie equal to the name of the tenand with the tenantId.
 
 ### Example
 
@@ -195,7 +183,6 @@ Finds and unpauses a Car with given carId, if paused. Sets car action status to 
 
 ```python
 import fleet_management_http_client_python
-from fleet_management_http_client_python.models.car_action_state import CarActionState
 from fleet_management_http_client_python.rest import ApiException
 from pprint import pprint
 
@@ -221,16 +208,14 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fleet_management_http_client_python.CarActionApi(api_client)
-    car_id = 56 # int | The car ID.
+    api_instance = fleet_management_http_client_python.TenantApi(api_client)
+    tenant_id = 56 # int | Tenant ID
 
     try:
-        # Finds and unpauses a Car with given carId, if paused. Sets car action status to NORMAL only if it is in PAUSED action status.
-        api_response = api_instance.unpause_car(car_id)
-        print("The response of CarActionApi->unpause_car:\n")
-        pprint(api_response)
+        # Make the server send back a response with set-cookie header to set cookie equal to the name of the tenand with the tenantId.
+        api_instance.set_tenant_cookie(tenant_id)
     except Exception as e:
-        print("Exception when calling CarActionApi->unpause_car: %s\n" % e)
+        print("Exception when calling TenantApi->set_tenant_cookie: %s\n" % e)
 ```
 
 
@@ -240,11 +225,11 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **car_id** | **int**| The car ID. | 
+ **tenant_id** | **int**| Tenant ID | 
 
 ### Return type
 
-[**List[CarActionState]**](CarActionState.md)
+void (empty response body)
 
 ### Authorization
 
@@ -259,9 +244,10 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successfully unpaused the Car. |  -  |
+**200** | The tenant with tenantId is accessible and its name is included in the Set-Cookie header. |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
 **404** | Not found |  -  |
 **0** | Unexpected error |  -  |
 

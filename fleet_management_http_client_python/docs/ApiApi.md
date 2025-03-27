@@ -14,8 +14,6 @@ Check HTTP server is running and accessible.
 
 ### Example
 
-* OAuth Authentication (oAuth2AuthCode):
-* Api Key Authentication (APIKeyAuth):
 
 ```python
 import fleet_management_http_client_python
@@ -28,18 +26,6 @@ configuration = fleet_management_http_client_python.Configuration(
     host = "/v2/management"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Configure API key authorization: APIKeyAuth
-configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
@@ -65,7 +51,7 @@ void (empty response body)
 
 ### Authorization
 
-[oAuth2AuthCode](../README.md#oAuth2AuthCode), [APIKeyAuth](../README.md#APIKeyAuth)
+No authorization required
 
 ### HTTP request headers
 

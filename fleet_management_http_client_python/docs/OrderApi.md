@@ -133,8 +133,8 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.OrderApi(api_client)
-    car_id = 1 # int | ID of the Car to which the Order is assigned.
-    order_id = 1 # int | ID of the Order to be returned.
+    car_id = 56 # int | The car ID.
+    order_id = 56 # int | The order ID.
 
     try:
         # Delete an Order identified by its ID and ID of a car to which it is assigned.
@@ -150,8 +150,8 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **car_id** | **int**| ID of the Car to which the Order is assigned. | 
- **order_id** | **int**| ID of the Order to be returned. | 
+ **car_id** | **int**| The car ID. | 
+ **order_id** | **int**| The order ID. | 
 
 ### Return type
 
@@ -219,7 +219,7 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.OrderApi(api_client)
-    car_id = 1 # int | ID of the Car for which Orders shall be returned.
+    car_id = 56 # int | The car ID.
     since = 56 # int | A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). (optional)
 
     try:
@@ -238,7 +238,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **car_id** | **int**| ID of the Car for which Orders shall be returned. | 
+ **car_id** | **int**| The car ID. | 
  **since** | **int**| A Unix timestamp in milliseconds. If specified, only objects created at the time or later will be returned. If unspecified, all objects are returned (since is set to 0 in that case). | [optional] 
 
 ### Return type
@@ -306,8 +306,8 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.OrderApi(api_client)
-    car_id = 1 # int | ID of the Car to which the Order is assigned.
-    order_id = 1 # int | ID of the Order to be returned.
+    car_id = 56 # int | The car ID.
+    order_id = 56 # int | The order ID.
 
     try:
         # Find an existing Order by the car ID and the order ID and return it.
@@ -325,8 +325,8 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **car_id** | **int**| ID of the Car to which the Order is assigned. | 
- **order_id** | **int**| ID of the Order to be returned. | 
+ **car_id** | **int**| The car ID. | 
+ **order_id** | **int**| The order ID. | 
 
 ### Return type
 

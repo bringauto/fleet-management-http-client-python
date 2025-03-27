@@ -133,7 +133,7 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.CarApi(api_client)
-    car_id = 1 # int | The ID of the Car to be deleted.
+    car_id = 56 # int | The car ID.
 
     try:
         # Delete a Car identified by its ID.
@@ -149,7 +149,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **car_id** | **int**| The ID of the Car to be deleted. | 
+ **car_id** | **int**| The car ID. | 
 
 ### Return type
 
@@ -217,7 +217,7 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.CarApi(api_client)
-    car_id = 1 # int | An ID of the Car to be returned.
+    car_id = 56 # int | The car ID.
 
     try:
         # Find a single Car by its ID.
@@ -235,7 +235,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **car_id** | **int**| An ID of the Car to be returned. | 
+ **car_id** | **int**| The car ID. | 
 
 ### Return type
 

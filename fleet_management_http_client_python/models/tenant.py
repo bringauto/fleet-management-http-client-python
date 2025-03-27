@@ -18,17 +18,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class MobilePhone(BaseModel):
+class Tenant(BaseModel):
     """
-    MobilePhone Primitive structure.
+    Tenant owning a subset of the entities on the server.
     """ # noqa: E501
-    phone: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["phone"]
+    id: Optional[StrictInt] = None
+    name: StrictStr = Field(description="Tenant name")
+    __properties: ClassVar[List[str]] = ["id", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +49,7 @@ class MobilePhone(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of MobilePhone from a JSON string"""
+        """Create an instance of Tenant from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +74,7 @@ class MobilePhone(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of MobilePhone from a dict"""
+        """Create an instance of Tenant from a dict"""
         if obj is None:
             return None
 
@@ -81,7 +82,8 @@ class MobilePhone(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "phone": obj.get("phone")
+            "id": obj.get("id"),
+            "name": obj.get("name")
         })
         return _obj
 
