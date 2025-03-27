@@ -132,7 +132,7 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.PlatformHWApi(api_client)
-    platform_hw_id = 1 # int | ID of Platform HW to delete.
+    platform_hw_id = 56 # int | The Platform HW ID.
 
     try:
         # Delete Platform HW with the given ID.
@@ -148,7 +148,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **platform_hw_id** | **int**| ID of Platform HW to delete. | 
+ **platform_hw_id** | **int**| The Platform HW ID. | 
 
 ### Return type
 
@@ -216,7 +216,7 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.PlatformHWApi(api_client)
-    platform_hw_id = 1 # int | ID of the Platform HW to return.
+    platform_hw_id = 56 # int | The Platform HW ID.
 
     try:
         # Find Platform HW with the given ID.
@@ -234,7 +234,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **platform_hw_id** | **int**| ID of the Platform HW to return. | 
+ **platform_hw_id** | **int**| The Platform HW ID. | 
 
 ### Return type
 

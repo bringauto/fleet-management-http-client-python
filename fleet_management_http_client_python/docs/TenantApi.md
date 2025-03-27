@@ -5,7 +5,8 @@ All URIs are relative to */v2/management*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_tenant**](TenantApi.md#delete_tenant) | **DELETE** /tenant | Delete Tenant with the given ID.
-[**get_tenants**](TenantApi.md#get_tenants) | **GET** /tenant | Find and return all existing Tenant.
+[**get_tenants**](TenantApi.md#get_tenants) | **GET** /tenant | Find and return all existing Tenants.
+[**set_tenant_cookie**](TenantApi.md#set_tenant_cookie) | **HEAD** /tenant/{tenantId} | Make the server send back a response with set-cookie header to set cookie equal to the name of the tenand with the tenantId.
 
 
 # **delete_tenant**
@@ -46,7 +47,7 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fleet_management_http_client_python.TenantApi(api_client)
-    tenant_id = 1 # int | ID of Tenant to delete.
+    tenant_id = 56 # int | Tenant ID
 
     try:
         # Delete Tenant with the given ID.
@@ -62,7 +63,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_id** | **int**| ID of Tenant to delete. | 
+ **tenant_id** | **int**| Tenant ID | 
 
 ### Return type
 
@@ -94,7 +95,7 @@ void (empty response body)
 # **get_tenants**
 > List[Tenant] get_tenants()
 
-Find and return all existing Tenant.
+Find and return all existing Tenants.
 
 ### Example
 
@@ -132,7 +133,7 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
     api_instance = fleet_management_http_client_python.TenantApi(api_client)
 
     try:
-        # Find and return all existing Tenant.
+        # Find and return all existing Tenants.
         api_response = api_instance.get_tenants()
         print("The response of TenantApi->get_tenants:\n")
         pprint(api_response)
@@ -166,6 +167,88 @@ This endpoint does not need any parameter.
 **200** | All the currently existing Tenants have been returned. |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**0** | Unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **set_tenant_cookie**
+> set_tenant_cookie(tenant_id)
+
+Make the server send back a response with set-cookie header to set cookie equal to the name of the tenand with the tenantId.
+
+### Example
+
+* OAuth Authentication (oAuth2AuthCode):
+* Api Key Authentication (APIKeyAuth):
+
+```python
+import fleet_management_http_client_python
+from fleet_management_http_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to /v2/management
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fleet_management_http_client_python.Configuration(
+    host = "/v2/management"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Configure API key authorization: APIKeyAuth
+configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with fleet_management_http_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fleet_management_http_client_python.TenantApi(api_client)
+    tenant_id = 56 # int | Tenant ID
+
+    try:
+        # Make the server send back a response with set-cookie header to set cookie equal to the name of the tenand with the tenantId.
+        api_instance.set_tenant_cookie(tenant_id)
+    except Exception as e:
+        print("Exception when calling TenantApi->set_tenant_cookie: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **int**| Tenant ID | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oAuth2AuthCode](../README.md#oAuth2AuthCode), [APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The tenant with tenantId is accessible and its name is included in the Set-Cookie header. |  -  |
+**400** | Bad request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not found |  -  |
 **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -61,5 +61,3 @@ fleet_management_http_client_python/models/stop.py
 fleet_management_http_client_python/models/tenant.py
 fleet_management_http_client_python/rest.py
 fleet_management_http_client_python/test/__init__.py
-fleet_management_http_client_python/test/test_tenant.py
-fleet_management_http_client_python/test/test_tenant_api.py
