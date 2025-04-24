@@ -5,7 +5,7 @@ All URIs are relative to */v2/management*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_tenants**](TenantApi.md#create_tenants) | **POST** /tenant | Create new Tenants.
-[**delete_tenant**](TenantApi.md#delete_tenant) | **DELETE** /tenant | Delete Tenant with the given ID.
+[**delete_tenant**](TenantApi.md#delete_tenant) | **DELETE** /tenant/{tenantId} | Delete Tenant with the given ID.
 [**get_tenants**](TenantApi.md#get_tenants) | **GET** /tenant | Find and return all existing Tenants.
 [**set_tenant_cookie**](TenantApi.md#set_tenant_cookie) | **HEAD** /tenant/{tenantId} | Make the server send back a response with set-cookie header to set cookie equal to the name of the tenand with the tenantId.
 
