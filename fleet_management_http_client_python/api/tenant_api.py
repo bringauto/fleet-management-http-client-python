@@ -56,7 +56,7 @@ class TenantApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> List[Tenant]:
         """Create new Tenants.
 
 
@@ -93,7 +93,7 @@ class TenantApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Tenant]",
             '400': "Error",
             '401': "Error",
             '409': "Error",
@@ -125,7 +125,7 @@ class TenantApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[List[Tenant]]:
         """Create new Tenants.
 
 
@@ -162,7 +162,7 @@ class TenantApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Tenant]",
             '400': "Error",
             '401': "Error",
             '409': "Error",
@@ -231,7 +231,7 @@ class TenantApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[Tenant]",
             '400': "Error",
             '401': "Error",
             '409': "Error",

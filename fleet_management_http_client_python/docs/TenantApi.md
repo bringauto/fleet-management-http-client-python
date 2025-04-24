@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create_tenants**
-> create_tenants(tenant)
+> List[Tenant] create_tenants(tenant)
 
 Create new Tenants.
 
@@ -53,7 +53,9 @@ with fleet_management_http_client_python.ApiClient(configuration) as api_client:
 
     try:
         # Create new Tenants.
-        api_instance.create_tenants(tenant)
+        api_response = api_instance.create_tenants(tenant)
+        print("The response of TenantApi->create_tenants:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling TenantApi->create_tenants: %s\n" % e)
 ```
@@ -69,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**List[Tenant]**](Tenant.md)
 
 ### Authorization
 
